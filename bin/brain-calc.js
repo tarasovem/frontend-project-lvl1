@@ -1,53 +1,31 @@
 #!/usr/bin/env node
 
-import readlineSync from 'readline-sync';
+import gameLogic from '../src/index.js';
+import getRandomNumber from '../src/utils.js';
 
-console.log('Welcome to the Brain Games!');
-const name = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${name}!`);
-console.log('What is the result of the expression?');
+const gameMechanics = () => {
+  const result = {};
+  const firstNumber = getRandomNumber(0, 30);
+  const secondNumber = getRandomNumber(0, 30);
+  const calcType = getRandomNumber(0, 2);
 
-const GAME_DURATION = 3;
-const MIN_NUMBER = 1;
-const MAX_NUMBER = 30;
+  if (calcType === 0) {
+    result.description = `${firstNumber} + ${secondNumber}`;
+    result.answer = firstNumber + secondNumber;
+  } else if (calcType === 1) {
+    result.description = `${firstNumber} - ${secondNumber}`;
+    result.answer = firstNumber - secondNumber;
+  } else if (calcType === 2) {
+    result.description = `${firstNumber} * ${secondNumber}`;
+    result.answer = firstNumber * secondNumber;
+  }
 
-const getRandowNumber = (min, max) => {
-  const number = min + Math.random() * (max + 1 - min);
-  return Math.floor(number);
+  return result;
 };
 
-for (let i = 1; i <= GAME_DURATION; i += 1) {
-  const firstNumber = getRandowNumber(MIN_NUMBER, MAX_NUMBER);
-  const secondNumber = getRandowNumber(MIN_NUMBER, MAX_NUMBER);
-  const mathOperationType = getRandowNumber(1, 3);
-  let rightAnswer = null;
+const gameSettings = {
+  rules: 'What is the result of the expression?',
+  getQuestion: gameMechanics,
+};
 
-  switch (mathOperationType) {
-    case 1:
-      console.log(`Question: ${firstNumber} + ${secondNumber}`);
-      rightAnswer = firstNumber + secondNumber;
-      break;
-    case 2:
-      console.log(`Question: ${firstNumber} - ${secondNumber}`);
-      rightAnswer = firstNumber - secondNumber;
-      break;
-    case 3:
-      console.log(`Question: ${firstNumber} * ${secondNumber}`);
-      rightAnswer = firstNumber * secondNumber;
-      break;
-    default:
-      console.error('Wrong type of math operation.');
-  }
-
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (rightAnswer !== Number(userAnswer)) {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}"`);
-    console.log(`Let's try again, ${name}!`);
-    break;
-  } else if (i === GAME_DURATION) {
-    console.log(`Congratulations, ${name}!`);
-    break;
-  } else {
-    console.log('Correct!');
-  }
-}
+gameLogic(gameSettings);
