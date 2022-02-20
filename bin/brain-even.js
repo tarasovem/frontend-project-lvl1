@@ -1,35 +1,21 @@
 #!/usr/bin/env node
 
-import readlineSync from 'readline-sync';
+import gameLogic from '../src/index.js';
+import getRandomNumber from '../src/utils.js';
 
-console.log('Welcome to the Brain Games!');
-const name = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${name}!`);
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
+const gameMechanics = () => {
+  const result = {};
+  const number = getRandomNumber(0, 100);
 
-const GAME_DURATION = 3;
-const MIN_NUMBER = 0;
-const MAX_NUMBER = 100;
+  result.description = `${number}`;
+  result.answer = number % 2 === 0 ? 'yes' : 'no';
 
-const getRandowNumber = () => {
-  const number = MIN_NUMBER + Math.random() * (MAX_NUMBER + 1 - MIN_NUMBER);
-  return Math.floor(number);
+  return result;
 };
 
-for (let i = 1; i <= GAME_DURATION; i += 1) {
-  const number = getRandowNumber();
-  const rightAnswer = number % 2 === 0 ? 'yes' : 'no';
+const gameSettings = {
+  rules: 'Answer "yes" if the number is even, otherwise answer "no".',
+  getQuestion: gameMechanics,
+};
 
-  console.log(`Question: ${number}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (rightAnswer !== userAnswer) {
-    console.log(`"${rightAnswer === 'yes' ? userAnswer : 'yes'}" is wrong answer ;(. Correct answer was "${rightAnswer === 'yes' ? 'yes' : 'no'}"`);
-    console.log(`Let's try again, ${name}!`);
-    break;
-  } else if (i === GAME_DURATION) {
-    console.log(`Congratulations, ${name}!`);
-    break;
-  } else {
-    console.log('Correct!');
-  }
-}
+gameLogic(gameSettings);
