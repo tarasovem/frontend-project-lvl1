@@ -12,9 +12,13 @@ export default (settings) => {
     const question = settings.getQuestion();
     console.log(`Question: ${question.description}`);
     const rightAnswer = question.answer;
-    const userAnswer = readlineSync.question('Your answer: ');
+    let userAnswer = readlineSync.question('Your answer: ');
 
-    if (rightAnswer !== Number(userAnswer)) {
+    if (typeof rightAnswer === 'number' && !Number.isNaN(Number(userAnswer))) {
+      userAnswer = Number(userAnswer);
+    }
+
+    if (rightAnswer !== userAnswer) {
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}"`);
       console.log(`Let's try again, ${name}!`);
       break;
