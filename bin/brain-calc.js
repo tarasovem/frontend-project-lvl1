@@ -13,8 +13,13 @@ const gameMechanics = () => {
     result.description = `${firstNumber} + ${secondNumber}`;
     result.answer = firstNumber + secondNumber;
   } else if (calcType === 1) {
-    result.description = `${firstNumber} - ${secondNumber}`;
-    result.answer = firstNumber - secondNumber;
+    if (secondNumber > firstNumber) {
+      result.description = `${secondNumber} - ${firstNumber}`;
+      result.answer = secondNumber - firstNumber;
+    } else {
+      result.description = `${firstNumber} - ${secondNumber}`;
+      result.answer = firstNumber - secondNumber;
+    }
   } else if (calcType === 2) {
     result.description = `${firstNumber} * ${secondNumber}`;
     result.answer = firstNumber * secondNumber;
