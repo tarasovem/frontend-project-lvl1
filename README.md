@@ -3,3 +3,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
 ["Brain-even" example](https://asciinema.org/a/r0Wc4OsTfLxodA7GO2MZYs1fD)
+["Brain-calc" example](https://asciinema.org/a/Bp2pWScNqX2bTrcbKzGwGcVmD)
+["Brain-gcd" example](https://asciinema.org/a/xA6x5tlc7129BWeFMy4ZUsFCH)
