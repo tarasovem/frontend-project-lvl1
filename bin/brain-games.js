@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import sayHello from '../src/cli.js';
+import gameLogic from '../src/index.js';
 
-sayHello();
+gameLogic();
