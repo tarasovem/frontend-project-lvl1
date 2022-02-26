@@ -1,5 +1,19 @@
 import readlineSync from 'readline-sync';
 
+const runEngine = (data) => {
+  console.log('Welcome to the Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+
+  if (data) {
+    console.log('Data here');
+  }
+};
+
+export default runEngine;
+
+/*import readlineSync from 'readline-sync';
+
 const GAME_DURATION = 3;
 
 export default (settings) => {
@@ -33,4 +47,4 @@ export default (settings) => {
     }
     settings.getQuestion();
   }
-};
+};*/

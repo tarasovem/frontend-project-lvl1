@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import gameLogic from '../src/index.js';
+import runGame from '../src/games/games.js';
 
-gameLogic();
+runGame();
