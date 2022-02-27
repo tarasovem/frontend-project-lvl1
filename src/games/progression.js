@@ -10,7 +10,7 @@ const getQuestionAndAnswer = () => {
 
   const arr = utils.getProgression(firstElem, delta, amountOfElements);
 
-  const hiddenIndex = utils.getRandomInt(amountOfElements);
+  const hiddenIndex = utils.getRandomInt(amountOfElements - 1);
   let hiddenElem = '..';
   [hiddenElem, arr[hiddenIndex]] = [arr[hiddenIndex], hiddenElem];
 
