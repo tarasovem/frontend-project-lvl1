@@ -24,8 +24,6 @@ const getQuestionAndAnswer = () => {
   const num2 = utils.getRandomInt(100);
   const operator = operators[utils.getRandomInt(operators.length - 1)];
 
-  console.log('operator', operator);
-
   const question = `${num1} ${operator} ${num2}`;
   const rightAnswer = String(getCalculationResult(num1, num2, operator));
 
