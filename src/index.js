@@ -10,7 +10,7 @@ const runEngine = (data) => {
   if (data) {
     console.log(data.gameRules);
 
-    const playRound = (roundNumber) => {
+    const playRound = (roundNumber = 1) => {
       if (roundNumber > numberOfRounds) {
         return true;
       }
@@ -32,7 +32,7 @@ const runEngine = (data) => {
       return false;
     };
 
-    const isWinner = playRound(1);
+    const isWinner = playRound();
 
     if (isWinner) {
       console.log(`Congratulations, ${name}!`);
